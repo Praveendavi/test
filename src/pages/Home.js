@@ -3,6 +3,9 @@ import { getUserList } from "../action/getUserListAction";
 import { connect } from "react-redux";
 import { Card } from "antd";
 
+// custom component
+import { Container } from "./HomeStyle";
+
 const Home = (props) => {
   // variables
   const { getUserList, getUserListState } = props;
@@ -19,15 +22,13 @@ const Home = (props) => {
       {getUserListState.apiState === "success" && (
         <>
           {getUserListState.data.map((item, index) => (
-            <Card
-              key={index}
-              hoverable
-              style={{ width: 240 }}
-              cover={<img alt="example" src={item.avatar} />}
-            >
-              HEllo
-              <Meta title={item.first_name} description={item.email} />
-            </Card>
+            <Container is_odd={index % 2}>
+              <img src={item.avatar} />
+              <div>
+                <span>{item.first_name}</span>
+                <span>{item.email}</span>
+              </div>
+            </Container>
           ))}
         </>
       )}
