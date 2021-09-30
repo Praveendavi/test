@@ -22,6 +22,7 @@ const Home = (props) => {
       {getUserListState.apiState === "success" && (
         <>
           <span>Hello</span>
+          <span>Hello</span>
           {getUserListState.data.map((item, index) => (
             <Container is_odd={index % 2}>
               <img src={item.avatar} />
